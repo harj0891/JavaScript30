@@ -37,28 +37,65 @@
     
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
+    const yearFiftheenHundreds = inventors.filter(inventor => inventor.year > 1500 && inventor.year < 1600)
+    // console.table(yearFiftheenHundreds);
+
 
     // Array.prototype.map()
     // 2. Give us an array of the inventors first and last names
+    const fullname = inventors.map(inventor => `${inventor.first} ${inventor.last}`)
+    // console.table(fullname);
+
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
+    const sortedBirthYear = inventors.sort((a, b) => a.year - b.year)
+    // console.table(sortedBirthYear);
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
+    const liveTotal = inventors.reduce((total, inventor) => {
+      return total + (inventor.passed - inventor.year);
+    }, 0);
+    // console.log(liveTotal);
+
 
     // 5. Sort the inventors by years lived
+    const sortedLivedYears = inventors.sort((a, b) => (a.passed - a.year)  - (b.passed - b.year))
+    // console.table(sortedLivedYears);
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+    // let categories = document.querySelector(".mw-category");
+    // let links = Array.from(categories.querySelectorAll("a"));
+    // let names = links.map(link => link.innerHTML);
+    // let de = names.filter(name => name.match(/de/ig));
+
 
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    const sortedPeopleLastName = people.sort((a,b) => a > b ? 1 :-1 );
+    // console.table(sortedPeopleLastName);
+
+
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+    
+    const dataCount = data.reduce((total,item) => {
+      if (!total[item]) {
+        total[item]=0; 
+      } 
+        
+      
+      total[item]++;
+      return total;
+      // console.log(item);
+    },{} );
+
+    console.log(dataCount);
 
   </script>
 </body>
